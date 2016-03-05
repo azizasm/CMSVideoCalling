@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyKad/MyKid/MyPR Reader</title>
+
+<body>
+<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script>
+    var socket = io.connect('http://localhost:8090');
+    socket.on('CH01', function (data) {
+        console.log(data);
+        //addMessage(data.status);
+        // socket.emit('my other event', { my: 'data' });
+    });
+    function addMessage(message) {
+        var text = document.createTextNode(message),
+                el = document.createElement('li'),
+                messages = document.getElementById('messages');
+
+        el.appendChild(text);
+        messages.appendChild(el);
+    }
+</script>
+</head>
+<pre>
+<ul id='messages'></ul>
+</pre>
+</body>
+</html>
